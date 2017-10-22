@@ -1,7 +1,7 @@
 {
 	"metadata": {
 		"version": 4.5,
-		"type": "BufferGeometry",
+		"type": "Object",
 		"generator": "BufferGeometry.toJSON"
 	},
 	"uuid": "B9720EC1-3951-4384-9A2B-F0498FCD64E1",
