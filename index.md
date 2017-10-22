@@ -2,7 +2,7 @@
 
 **Linkar** lets anyone **create a virtual avatar** of someone of yourself, **with only a selfie and a Social Network account like Twitter.**
 
-You can create one now online with the [Linkar Editor](https://prazma.github.io/linkar/program.html) for free.
+You can create one now online with the [Linkar Editor](https://prazma.github.io/linkar/program) for free.
 
 ### Burst Link
 
