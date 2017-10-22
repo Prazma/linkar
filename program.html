@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>linkar</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <style>
+            body {
+                margin: 0;
+                background: #000000;
+                font-family: sans-serif;
+                color: #fff;
+                text-align: center;
+            }
+            #console {
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                font-family: monospace;
+                margin-top: 10px;
+                padding: 6px 6px;
+                border-radius: 2px;
+            }
+            #mainframe {
+                width: 90%;
+                margin-right: auto;
+                margin-left: auto;
+                margin-top: 20px;
+                padding: 6px 6px;
+                border-radius: 2px;
+                text-align: center;
+            }
+            img {
+                margin-top: 10px;
+                width: 90%;
+                box-shadow: 0px 0px 10px #888888;
+                max-width: 500px;
+            }
+            .nonebtn {
+                background: transparent;
+                border: none;
+            }
+            .celltile {
+                border: 2px solid #ff5500;
+                position: absolute;
+            }
+            .btn {
+                width: 90%;
+                transition: 0.5s;
+                -webkit-transition: 0.5s;
+            }
+            .fileUpload {
+				position: relative;
+				overflow: hidden;
+				margin: 10px;
+			}
+			.fileUpload input.upload {
+				position: absolute;
+				top: 0;
+				right: 0;
+				margin: 0;
+				padding: 0;
+				font-size: 20px;
+				cursor: pointer;
+				opacity: 0;
+				filter: alpha(opacity=0);
+			}
+            .titleCell {
+                width: 100%;
+                background: #252525;
+                border: none;
+                border-bottom: 1px solid #000000;
+                padding: 10px 0px 10px 0px;
+                color: #ffffff;
+                font-size: 25px
+            }
+            #load {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                height: 100vh;
+                background: #ffffff;
+                color: #bfbfbf;
+                font-weight: bold;
+                font-size: 30px;
+                text-align: center;
+            }
+            #setup {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                height: 100vh;
+                z-index: 2000;
+            }
+        </style>
+        <script src="js/build/jquery.js"></script>
+        <script src="js/build/bootstrap.js"></script>
+        <link rel="stylesheet" href="css/assets.css">
+    </head>
+    <body>
+        <div id="load" style="display: none">
+            <br><br><span>CREATING AVATAR...</span>
+        </div>
+        <div id="setup">
+            <div class="titleCell">
+                linkar
+            </div>
+            <div id="mainframe">
+                <div id="btnUpload" class="fileUpload btn btn-primary" style="width: 90%; padding: 10px">
+					<span id="updlabel">UPLOAD SELFIE</span>
+					<input id="imgInp" type="file" class="upload"/>
+				</div><br><br>
+                <div id="information" class="alert alert-info" style="display: none;">select where the face is</div>
+                <img id="blah">
+            </div>
+            <button style="display: none; opacity: 0;" id="crebtn" class="btn btn-info" onclick="cre()" disabled>CREATE AVATAR</button>
+            <div id="console" style="display: none">
+                <span>CONSOLE:</span><br>
+                <span id="consoleLog"></span>
+            </div>
+            <div id="facecell" class="celltile" style="display: none;"></div>
+            <div id="eyeonecell" class="celltile" style="display: none;"></div>
+            <div id="eyetwocell" class="celltile" style="display: none;"></div>
+            <div id="nosecell" class="celltile" style="display: none;"></div>
+            <div id="mouthcell" class="celltile" style="display: none;"></div>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+            <script>
+                const recon = document.getElementById("consoleLog");
+                const inforak = document.getElementById("information");
+                var selectMode = "face";
+                var facex, facey, facerex, facerey;
+                var eye1x, eye1y, eye1rex, eye1rey;
+                var eye2x, eye2y, eye2rex, eye2rey;
+                var nosex, nosey, noserex, noserey;
+                var mouthx, mouthy, mouthrex, mouthrey;
+                $("#imgInp").change(function(){
+				    readURL(this);
+                });
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            inforak.style.display = "block";
+                            $('#blah').attr('src', e.target.result);
+                            recon.innerHTML += "loaded image<br>";
+                            document.getElementById("btnUpload").style.opacity = "0";
+                            document.getElementById("crebtn").style.display = "inline";
+                            setTimeout( function () {
+                                document.getElementById("btnUpload").style.display = "none";
+                                document.getElementById("crebtn").style.opacity = "1";
+                            }, 500)
+                        }
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+                $("#blah").mousedown(function() {
+                    if( selectMode == "mouth") {
+                        inforak.innerHTML = "select the <strong>MOUTH</strong>.";                        
+                        mouthx = event.clientX;
+                        mouthy = event.clientY;
+                        document.getElementById("mouthcell").style.display = "block";
+                        document.getElementById("mouthcell").style.top = mouthy + "px";
+                        document.getElementById("mouthcell").style.left = mouthx + "px";
+                    }
+                    if( selectMode == "nose") {
+                        inforak.innerHTML = "select the <strong>NOSE</strong>.";
+                        nosex = event.clientX;
+                        nosey = event.clientY;
+                        document.getElementById("nosecell").style.display = "block";
+                        document.getElementById("nosecell").style.top = nosey + "px";
+                        document.getElementById("nosecell").style.left = nosex + "px";
+                    }
+                    if( selectMode == "eye2") {
+                        inforak.innerHTML = "select the <strong>RIGHT EYE</strong>.";
+                        eye2x = event.clientX;
+                        eye2y = event.clientY;
+                        document.getElementById("eyetwocell").style.display = "block";
+                        document.getElementById("eyetwocell").style.top = facey + "px";
+                        document.getElementById("eyetwocell").style.left = facex + "px";
+                    }
+                    if( selectMode == "eye1") {
+                        inforak.innerHTML = "select the <strong>LEFT EYE</strong>.";
+                        eye1x = event.clientX;
+                        eye1y = event.clientY;
+                        document.getElementById("eyeonecell").style.display = "block";
+                        document.getElementById("eyeonecell").style.top = eye1y + "px";
+                        document.getElementById("eyeonecell").style.left = eye1x + "px";
+                    }
+                    if( selectMode == "face") {
+                        inforak.innerHTML = "select the <strong>FACE</strong>.";
+                        facex = event.clientX;
+                        facey = event.clientY;
+                        document.getElementById("facecell").style.display = "block";
+                        document.getElementById("facecell").style.top = facey + "px";
+                        document.getElementById("facecell").style.left = facex + "px";
+                    }
+                });
+                
+                $("#blah").mouseup(function() {
+                    if( selectMode == "mouth") {
+                        inforak.innerHTML = "ALL DONE!";
+                        document.getElementById("crebtn").disabled = false;
+                        mouthrex = event.clientX;
+                        mouthrey = event.clientY;
+                        var cellwidth = mouthx - mouthrex;
+                        var cellheight = mouthy - mouthrey;
+                        document.getElementById("mouthcell").style.width = cellwidth * -1 + "px";
+                        document.getElementById("mouthcell").style.height = cellheight * -1 + "px";
+                        selectMode = "done";
+                    }
+                    if( selectMode == "nose") {
+                        inforak.innerHTML = "drag the area of the <strong>MOUTH</strong>";
+                        noserex = event.clientX;
+                        noserey = event.clientY;
+                        var cellwidth = nosex - noserex;
+                        var cellheight = nosey - noserey;
+                        document.getElementById("nosecell").style.width = cellwidth * -1 + "px";
+                        document.getElementById("nosecell").style.height = cellheight * -1 + "px";
+                        selectMode = "mouth";
+                    }
+                    if( selectMode == "eye2") {
+                        inforak.innerHTML = "drag the area of the <strong>NOSE</strong>";
+                        eye2rex = event.clientX;
+                        eye2rey = event.clientY;
+                        var cellwidth = eye2x - eye2rex;
+                        var cellheight = eye2y - eye2rey;
+                        document.getElementById("eyetwocell").style.width = cellwidth * -1 + "px";
+                        document.getElementById("eyetwocell").style.height = cellheight * -1 + "px";
+                        selectMode = "nose";
+                    }
+                    if( selectMode == "eye1") {
+                        inforak.innerHTML = "drag the area of the <strong>RIGHT EYE</strong>";
+                        eye1x = event.clientX;
+                        eye1y = event.clientY;
+                        var cellwidth = eye1x - eye1rex;
+                        var cellheight = eye1y - eye2rey;
+                        document.getElementById("eyeonecell").style.width = cellwidth * -1 + "px";
+                        document.getElementById("eyeonecell").style.height = cellheight * -1 + "px";
+                        selectMode = "eye2";
+                    }
+                    if( selectMode == "face") {
+                        inforak.innerHTML = "drag the area of the <strong>LEFT EYE</strong>";
+                        facerex = event.clientX;
+                        facerey = event.clientY;
+                        var cellwidth = facex - facerex;
+                        var cellheight = facey - facerey;
+                        document.getElementById("facecell").style.width = cellwidth * -1 + "px";
+                        document.getElementById("facecell").style.height = cellheight * -1 + "px";
+                        selectMode = "eye1";
+                    }
+                        document.getElementById("facecell").style.display = "block";
+                        document.getElementById("eyeonecell").style.display = "block";
+                        document.getElementById("eyetwocell").style.display = "block";
+                        document.getElementById("nosecell").style.display = "block";
+                        document.getElementById("mouthcell").style.display = "block";
+                    setTimeout ( function () {
+                        document.getElementById("facecell").style.display = "none";
+                        document.getElementById("eyeonecell").style.display = "none";
+                        document.getElementById("eyetwocell").style.display = "none";
+                        document.getElementById("nosecell").style.display = "none";
+                        document.getElementById("mouthcell").style.display = "none";
+                    }, 500)
+                });
+                function cre() {
+                    document.getElementById("setup").style.display = "none";
+                    document.getElementById("load").style.display = "block";
+                    init();
+                    setTimeout( function () {
+                        document.getElementById("load").style.display = 'none';
+                    }, 1000)
+                }
+                $('img').on('dragstart', function(event) { event.preventDefault(); });
+            </script>
+            <script>
+                var camera, scene, renderer;
+                var geometry, material, mesh, obj;
+                
+                function init() {
+
+                    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 10 );
+				    camera.position.z = 3;
+
+				    scene = new THREE.Scene();
+				    scene.background = new THREE.Color( 0xffffff );
+
+				    var objectLoader = new THREE.ObjectLoader();
+                    objectLoader.load("js/model/renderObject.json", function ( obj ) {
+                        var mat = new THREE.MeshBasicMaterial( { color: 0xEBC9A5, wireframe: false } );
+                        scene.add( obj );
+                    } );
+
+				    renderer = new THREE.WebGLRenderer( { antialias: true } );
+				    renderer.setSize( window.innerWidth, window.innerHeight );
+				    document.body.appendChild( renderer.domElement );				
+				
+			     }
+
+			     function animate( ) {
+                     
+                    renderer.render( scene, camera );
+				    requestAnimationFrame( animate );
+
+                 }
+                
+                init();
+                requestAnimationFrame( animate );
+            </script>
+        </div>
+    </body>
+</html>
