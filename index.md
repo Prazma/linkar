@@ -1,37 +1,27 @@
-## Welcome to GitHub Pages
+## Welcome to Linkar
 
-You can use the [editor on GitHub](https://github.com/Prazma/Linkar/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+**Linkar** lets anyone **create a virtual avatar** of someone of yourself, **with only a selfie and a Social Network account like Twitter.**
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+You can create one now online with the [Linkar Editor](https://prazma.github.io/linkar/program.html) for free.
 
-### Markdown
+### Burst Link
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+By saying **"Burst Link"** while talking to the avatars,
 
-```markdown
-Syntax highlighted code block
+- Talk to the avatars in VR
+- Explore the VR space with your friends and avatars.
 
-# Header 1
-## Header 2
-### Header 3
+### Privacy Policy
 
-- Bulleted
-- List
+The selfie you upload will not be saved. Therefore, your selfie will not go online for anyone to download or view. The avatars wll be saved on your phone, unless you sync data with another phone. Linkar does not have any programs that will
 
-1. Numbered
-2. List
+- Sync data
+- Put any data on the internet
 
-**Bold** and _Italic_ and `Code` text
+### Copyright and Usage of the Code
 
-[Link](url) and ![Image](src)
-```
+Although the source code is on GitHub, **you may not copy our code for your personal projects for profitable use**. The source code is shared to develop a new technology without profit. **(Prazma Startup may earn profit based on this technology, regarding to the rights as the author of the software adn code)**.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Prazma/Linkar/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Project Lead by [Tomo Yamamoto](https://github.com/prazma).
