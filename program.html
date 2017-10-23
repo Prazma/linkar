@@ -276,11 +276,11 @@
                 
                 function init() {
 
-                    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 10 );
+                    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 10000 );
 				    camera.position.z = 3;
 
 				    scene = new THREE.Scene();
-				    scene.background = new THREE.Color( 0xffffff );
+				    scene.background = new THREE.Color( 0x000000 );
 			
 			var ambient = new THREE.AmbientLight( 0x444444 );
 				scene.add( ambient );
