@@ -293,10 +293,9 @@
                         var mat = new THREE.MeshBasicMaterial( { color: 0xEBC9A5, wireframe: false } );
                         scene.add( obj );
                     } );
-			objectLoader.load("js/models/headGeometry.json", function ( hde ) {
-                        var met = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: false } );
-			var fin = new THREE.Mesh( hde, met );
-                        scene.add( fin );
+			objectLoader.load("js/models/headGeometry.json", function ( obj ) {
+                        var mat = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: false } );
+                        scene.add( obj );
                     } );
 
 				    renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -306,7 +305,7 @@
 			     }
 
 			     function animate( ) {
-                     
+				camera.position.z += 0.1
                     		renderer.render( scene, camera );
 				    requestAnimationFrame( animate );
 
