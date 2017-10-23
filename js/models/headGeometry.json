@@ -90,7 +90,7 @@
 		"uuid": "AB7F22FD-F7CE-486F-BECA-459534DBAB17",
 		"type": "Group",
 		"name": "standardHeadObjectFixed.dae",
-		"matrix": [1,0,0,0,0,0,-1,0,0,1,0,0,3.520849,0,0,1],
+		"matrix": [1,0,0,0,0,0,-1,0,0,1,0,0,0,0,0,1],
 		"children": [
 			{
 				"uuid": "FC92EEFC-2654-4C8D-8CA1-8191852ECE1A",
