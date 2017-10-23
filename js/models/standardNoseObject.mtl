@@ -1,0 +1,12 @@
+# Blender MTL File: 'standard-male-figure.blend'
+# Material Count: 1
+
+newmtl bababa
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.729412 0.729412 0.729412
+Ks 0.001176 0.001176 0.001176
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
