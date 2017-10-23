@@ -293,6 +293,10 @@
                         var mat = new THREE.MeshBasicMaterial( { color: 0xEBC9A5, wireframe: false } );
                         scene.add( obj );
                     } );
+			objectLoader.load("js/models/modelHead.json", function ( obj ) {
+                        var mat = new THREE.MeshBasicMaterial( { color: 0xEBC9A5, wireframe: false } );
+                        scene.add( obj );
+                    } );
 
 				    renderer = new THREE.WebGLRenderer( { antialias: true } );
 				    renderer.setSize( window.innerWidth, window.innerHeight );
