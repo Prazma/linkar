@@ -281,7 +281,13 @@
 
 				    scene = new THREE.Scene();
 				    scene.background = new THREE.Color( 0xffffff );
-
+			
+			var ambient = new THREE.AmbientLight( 0x444444 );
+				scene.add( ambient );
+				var directionalLight = new THREE.DirectionalLight( 0xffeedd );
+				directionalLight.position.set( 0, 0, 1 ).normalize();
+				scene.add( directionalLight );
+			
 				    var objectLoader = new THREE.ObjectLoader();
                     objectLoader.load("js/models/noseObject.json", function ( obj ) {
                         var mat = new THREE.MeshBasicMaterial( { color: 0xEBC9A5, wireframe: false } );
@@ -296,7 +302,7 @@
 
 			     function animate( ) {
                      
-                    renderer.render( scene, camera );
+                    		renderer.render( scene, camera );
 				    requestAnimationFrame( animate );
 
                  }
