@@ -300,7 +300,7 @@
                         scene.add( obj );
 			obj.position.z = -1.45;
 			var cellwidth = facex - facerex;
-                        var cellheight = facey - facerey;
+                        var cellheight = facey - facerey + 200;
 			obj.scale.set( cellwidth, cellheight, 100 );
                     } );
 
@@ -311,7 +311,7 @@
 			     }
 
 			     function animate( ) {
-				     camera.position.z += 0.05;
+				     camera.position.z = 110;
                     		renderer.render( scene, camera );
 				    requestAnimationFrame( animate );
 
