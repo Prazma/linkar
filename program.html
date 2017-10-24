@@ -274,7 +274,7 @@
             </script>
             <script>
                 var camera, scene, renderer;
-                var geometry, material, mesh, obj;
+                var geometry, material, mesh, obj, KosHead;
                 
                 function init() {
 
@@ -297,11 +297,12 @@
                     } );
 			objectLoader.load("js/models/headGeometry.json", function ( obj ) {
                         var mat = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: false } );
-                        scene.add( obj );
-			obj.position.z = -1.45;
+			KosHead = obj;
+                        scene.add( KosHead );
+			KosHead.position.z = -1.45;
 			var cellwidth = facex - facerex;
                         var cellheight = facey - facerey + 200;
-			obj.scale.set( cellwidth, cellheight, 100 );
+			KosHead.scale.set( cellwidth, cellwidth, cellheight );
                     } );
 
 				    renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -311,6 +312,8 @@
 			     }
 
 			     function animate( ) {
+				KosHead.rotation.x += 0.02;
+				KosHead.rotation.y += 0.02;
 				     camera.position.z = 550;
                     		renderer.render( scene, camera );
 				    requestAnimationFrame( animate );
