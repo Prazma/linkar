@@ -111,6 +111,9 @@
 				display: inline;
 				font-weight: lighter;
 			}
+			.initbtn:disabled {
+				opacity: 0.5;
+			}
 			#shawnWalker {
 				margin-top: 10px;
 				margin-bottom: 40px;
@@ -136,7 +139,7 @@
                 <div id="information" class="initbtn" style="display: none; border: 1px solid rgba(255, 255, 255, 0.2); padding: 15px;">select where the face is</div>
                 <img id="blah" class="img">
             </div>
-            <button style="display: none; opacity: 0;" id="crebtn" class="btn btn-info" onclick="cre()" disabled>CREATE AVATAR</button>
+            <button style="display: none; opacity: 0; padding: 10px; border-radius: 0px; font-size: 15px; width: 90%;" id="crebtn" class="initbtn" onclick="cre()" disabled>CREATE AVATAR</button>
             <div id="console" style="display: none">
                 <span>CONSOLE:</span><br>
                 <span id="consoleLog"></span>
