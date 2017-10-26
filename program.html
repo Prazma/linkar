@@ -313,7 +313,7 @@
             <script src="js/build/three.js"></script>
             <script>
                 var camera, scene, renderer;
-                var geometry, material, mesh, obj, KosHead;
+                var geometry, material, mesh, obj, KosHead, KosNose;
                 
                 function init() {
 
@@ -332,7 +332,13 @@
 				    var objectLoader = new THREE.ObjectLoader();
                     objectLoader.load("js/models/standardNoseObject.json", function ( obj ) {
                         var mat = new THREE.MeshBasicMaterial( { color: 0xEBC9A5, wireframe: false } );
-                        scene.add( obj );
+						KosNose = obj;
+                        scene.add( KosNose );
+						var facewidth = facerex - facex;
+						KosHead.position.z = facewidth/2;
+                        var cellwidth = facerex - facex;
+                        var cellheight = facerey - facey;
+						KosHead.scale.set( cellwidth, cellheight );
                     } );
 			objectLoader.load("js/models/headGeometry.json", function ( obj ) {
                         var mat = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: false } );
@@ -341,7 +347,7 @@
 			KosHead.position.z = -1.45;
 			var cellwidth = facerex - facex;
                         var cellheight = facerey - facey;
-			KosHead.scale.set( cellwidth, cellwidth, cellheight );
+			 			KosHead.scale.set( cellwidth, cellwidth, cellheight );
                     } );
 
 				    renderer = new THREE.WebGLRenderer( { antialias: true } );
