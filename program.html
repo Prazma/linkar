@@ -146,7 +146,6 @@
             <div id="eyetwocell" class="celltile" style="display: none;"></div>
             <div id="nosecell" class="celltile" style="display: none;"></div>
             <div id="mouthcell" class="celltile" style="display: none;"></div>
-            <script src="js/build/three.js"></script>
             <script>
                 const recon = document.getElementById("consoleLog");
                 const inforak = document.getElementById("information");
@@ -166,10 +165,10 @@
                             inforak.style.display = "block";
                             $('#blah').attr('src', e.target.result);
                             recon.innerHTML += "loaded image<br>";
+                            document.getElementById("frsDash").style.display = "none";
                             document.getElementById("frsDash").style.opacity = "0";
                             document.getElementById("crebtn").style.display = "inline";
                             setTimeout( function () {
-                                document.getElementById("frsDash").style.display = "none";
                                 document.getElementById("crebtn").style.opacity = "1";
                             }, 500)
                         }
@@ -298,6 +297,7 @@
                 }
                 $('img').on('dragstart', function(event) { event.preventDefault(); });
             </script>
+            <script src="js/build/three.js"></script>
             <script>
                 var camera, scene, renderer;
                 var geometry, material, mesh, obj, KosHead;
@@ -338,12 +338,9 @@
 			     }
 
 			     function animate( ) {
-				KosHead.rotation.x += 0.02;
-				KosHead.rotation.y += 0.02;
 				     camera.position.z = 550;
-                    		renderer.render( scene, camera );
-				    requestAnimationFrame( animate );
-
+                     renderer.render( scene, camera );
+				     requestAnimationFrame( animate );
                  }
             </script>
         </div>
