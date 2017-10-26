@@ -231,7 +231,9 @@
                         var cellheight = mouthy - mouthrey;
                         document.getElementById("mouthcell").style.width = cellwidth * -1 + "px";
                         document.getElementById("mouthcell").style.height = cellheight * -1 + "px";
-                        selectMode = "done";
+                        setTimeout( function () {
+							selectMode = "done";
+						}, 50)
                     }
                     if( selectMode == "nose") {
                         inforak.innerHTML = "drag the area of the <strong>MOUTH</strong>";
@@ -241,7 +243,9 @@
                         var cellheight = nosey - noserey;
                         document.getElementById("nosecell").style.width = cellwidth * -1 + "px";
                         document.getElementById("nosecell").style.height = cellheight * -1 + "px";
-                        selectMode = "mouth";
+                        setTimeout( function () {
+							selectMode = "mouth";
+						}, 50)
                     }
                     if( selectMode == "eye2") {
                         inforak.innerHTML = "drag the area of the <strong>NOSE</strong>";
@@ -251,7 +255,9 @@
                         var cellheight = eye2y - eye2rey;
                         document.getElementById("eyetwocell").style.width = cellwidth * -1 + "px";
                         document.getElementById("eyetwocell").style.height = cellheight * -1 + "px";
-                        selectMode = "nose";
+                        setTimeout( function () {
+							selectMode = "nose";
+						}, 50)
                     }
                     if( selectMode == "eye1") {
                         inforak.innerHTML = "drag the area of the <strong>RIGHT EYE</strong>";
@@ -261,7 +267,9 @@
                         var cellheight = eye1y - eye1rey;
                         document.getElementById("eyeonecell").style.width = cellwidth * -1 + "px";
                         document.getElementById("eyeonecell").style.height = cellheight * -1 + "px";
-                        selectMode = "eye2";
+                        setTimeout( function () {
+							selectMode = "eye2";
+						}, 50)
                     }
                     if( selectMode == "face") {
                         inforak.innerHTML = "drag the area of the <strong>LEFT EYE</strong>";
@@ -271,7 +279,9 @@
                         var cellheight = facey - facerey;
                         document.getElementById("facecell").style.width = cellwidth * -1 + "px";
                         document.getElementById("facecell").style.height = cellheight * -1 + "px";
-                        selectMode = "eye1";
+                        setTimeout( function () {
+							selectMode = "eye1";
+						}, 50)
                     }
                         document.getElementById("facecell").style.display = "block";
                         document.getElementById("eyeonecell").style.display = "block";
