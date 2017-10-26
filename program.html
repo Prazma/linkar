@@ -336,6 +336,7 @@
 
 				    renderer = new THREE.WebGLRenderer( { antialias: true } );
 				    renderer.setSize( window.innerWidth, window.innerHeight );
+					document.getElementsByTagName("CANVAS")[0].style.display = "none";
 				    document.body.appendChild( renderer.domElement );				
 				
 			     }
