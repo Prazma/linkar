@@ -355,7 +355,7 @@
 					
                     objectLoader.load("js/models/standardNoseObject.json", function ( obj ) {
                         var mat = new THREE.MeshBasicMaterial( { color: 0xffdbac, wireframe: false } );
-						KosNose = new THREE.Mesh( obj, mat );
+						KosNose = obj;
                         scene.add( KosNose );
 						var facewidth = facerex - facex;
 						KosNose.position.z = facewidth/2 + 150;
@@ -366,7 +366,7 @@
 					
 					objectLoader.load("js/models/headGeometry.json", function ( obj ) {
                         var mat = new THREE.MeshBasicMaterial( { color: 0xffdbac, wireframe: false } );
-						KosHead = new THREE.Mesh( obj, mat );
+						KosHead = obj;
                         scene.add( KosHead );
 						KosHead.position.z = -1.45;
 						var cellwidth = facerex - facex;
