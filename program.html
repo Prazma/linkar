@@ -354,10 +354,10 @@
 						KosNose = obj;
                         scene.add( KosNose );
 						var facewidth = facerex - facex;
-						KosHead.position.z = facewidth/2;
+						KosNose.position.z = facewidth/2;
                         var cellwidth = facerex - facex;
                         var cellheight = facerey - facey;
-						KosHead.scale.set( cellwidth, cellheight );
+						KosNose.scale.set( cellwidth, cellheight );
                     } );
 			objectLoader.load("js/models/headGeometry.json", function ( obj ) {
                         var mat = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: false } );
