@@ -332,6 +332,7 @@
                 $('img').on('dragstart', function(event) { event.preventDefault(); });
             </script>
             <script src="js/build/three.js"></script>
+			<script src="js/controls/orbit3d.js"></script>
             <script>
                 var camera, scene, renderer;
                 var geometry, material, mesh, obj, KosHead, KosNose;
@@ -373,6 +374,14 @@
 
 				    renderer = new THREE.WebGLRenderer( { antialias: true } );
 				    renderer.setSize( window.innerWidth, window.innerHeight );
+					
+					controls = new THREE.OrbitControls( camera, renderer.domElement );
+					controls.addEventListener( 'change', render );
+
+
+
+					controls.enableZoom = false;
+					
 				    document.body.appendChild( renderer.domElement );
 					document.getElementsByTagName("CANVAS")[0].style.display = "none";		
 				
@@ -382,7 +391,13 @@
 				     camera.position.z = 550;
                      renderer.render( scene, camera );
 				     requestAnimationFrame( animate );
+					 controls.update();
+					 render();
                  }
+				
+				function render() {
+					renderer.render( scene, camera );
+				}
 				
 				function move() {
 					var elem = document.getElementById("myBar");   
