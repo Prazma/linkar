@@ -352,9 +352,10 @@
 				scene.add( directionalLight );
 			
 				    var objectLoader = new THREE.ObjectLoader();
+					
                     objectLoader.load("js/models/standardNoseObject.json", function ( obj ) {
-                        var mat = new THREE.MeshBasicMaterial( { color: 0xEBC9A5, wireframe: false } );
-						KosNose = obj;
+                        var mat = new THREE.MeshBasicMaterial( { color: 0xffdbac, wireframe: false } );
+						KosNose = new THREE.Mesh( obj, mat );
                         scene.add( KosNose );
 						var facewidth = facerex - facex;
 						KosNose.position.z = facewidth/2 + 150;
@@ -362,12 +363,13 @@
                         var cellheight = facerey - facey;
 						KosNose.scale.set( cellwidth, cellwidth, cellheight );
                     } );
-			objectLoader.load("js/models/headGeometry.json", function ( obj ) {
-                        var mat = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: false } );
-			KosHead = obj;
+					
+					objectLoader.load("js/models/headGeometry.json", function ( obj ) {
+                        var mat = new THREE.MeshBasicMaterial( { color: 0xffdbac, wireframe: false } );
+						KosHead = new THREE.Mesh( obj, mat );
                         scene.add( KosHead );
-			KosHead.position.z = -1.45;
-			var cellwidth = facerex - facex;
+						KosHead.position.z = -1.45;
+						var cellwidth = facerex - facex;
                         var cellheight = facerey - facey;
 			 			KosHead.scale.set( cellwidth, cellwidth, cellheight );
                     } );
