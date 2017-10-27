@@ -124,6 +124,8 @@
 				width: 100%;
 				background-color: transparent;
 				z-index: 3000;
+				transition: 0.5s;
+				-webkit-transition: 0.5s;
 			}
 			
 			#myBar {
@@ -275,8 +277,8 @@
                     }
                     if( selectMode == "eye1") {
                         inforak.innerHTML = "drag the area of the <strong>RIGHT EYE</strong>";
-                        eye1x = event.clientX;
-                        eye1y = event.clientY;
+                        eye1rex = event.clientX;
+                        eye1rey = event.clientY;
                         var cellwidth = eye1x - eye1rex;
                         var cellheight = eye1y - eye1rey;
                         document.getElementById("eyeonecell").style.width = cellwidth * -1 + "px";
@@ -387,6 +389,7 @@
 					function frame() {
 						if (width >= 100) {
 							clearInterval(id);
+							document.getElementById("myProgress").style.opacity = "0";
 						} else {
 							width++; 
 							elem.style.width = width + '%'; 
