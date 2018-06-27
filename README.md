@@ -4,13 +4,6 @@
 
 You can create one now online with the [Linkar Editor](https://prazma.github.io/linkar/program) for free.
 
-### Burst Link
-
-By saying **"Burst Link"** while talking to the avatars,
-
-- Talk to the avatars in VR
-- Explore the VR space with your friends and avatars.
-
 ### Privacy Policy
 
 The selfie you upload will not be saved. Therefore, your selfie will not go online for anyone to download or view. The avatars wll be saved on your phone, unless you sync data with another phone. Linkar does not have any programs that will
